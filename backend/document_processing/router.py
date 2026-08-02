@@ -1,18 +1,13 @@
-import fitz
+from .metrics import Metrcis, DocumentMetrics
+from .models import DocumentType
 
-doc = fitz.open("docs/Java_Complete_Notes.pdf")
-total_words = 0
 
-for i,page in enumerate(doc):
-    text = page.get_text().strip()
-    total_words += len(text.split())
+class DocumentRouter:
 
-print(total_words)
-
-if total_words > 50:
-    print("Digital PDF")
-
-else:
-    print("Scanned PDF")
-    
-
+    def classify_document(self, file_path: str):
+        metrics = Metrcis().get_metrcis(file_path)
+        if metrics['total_words'] > 50 and metrics['total_characters'] > 300:
+            metrics["document_type"] = DocumentType.DIGITAL
+        else:
+            metrics["document_type"] = DocumentType.SCANNED
+        return DocumentMetrics(metrics)
