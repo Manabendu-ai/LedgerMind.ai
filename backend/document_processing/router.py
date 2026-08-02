@@ -1,13 +1,20 @@
-from .metrics import Metrcis, DocumentMetrics
+from .metrics import Metrics, DocumentMetrics
 from .models import DocumentType
 
 
 class DocumentRouter:
 
     def classify_document(self, file_path: str):
-        metrics = Metrcis().get_metrcis(file_path)
+        metrics = Metrics().get_metrics(file_path)
         if metrics['total_words'] > 50 and metrics['total_characters'] > 300:
-            metrics["document_type"] = DocumentType.DIGITAL
+            doc_type = DocumentType.DIGITAL
         else:
-            metrics["document_type"] = DocumentType.SCANNED
-        return DocumentMetrics(metrics)
+            doc_type = DocumentType.SCANNED
+        return DocumentMetrics(
+            total_pages=metrics["pages"],
+            total_words=metrics["words"],
+            total_characters=metrics["characters"],
+            average_words_per_page=metrics["avg_words"],
+            average_characters_per_page=metrics["avg_characters"],
+            document_type=doc_type,
+        )
