@@ -2,6 +2,6 @@ from document_processing.router import DocumentRouter
 
 router = DocumentRouter()
 
-result = router.classify_document("docs/Java_Complete_Notes.pdf")
+result = router.classify_document("docs/LeetCode Java Practice Solved Questions.pdf")
 
 print(result)
