@@ -4,20 +4,18 @@ from .models import DocumentType
 
 @dataclass
 class DocumentMetrics:
-    def __init__(self, metrics : dict):
-        self.total_pages = metrics["total_pages"]
-        self.total_words = metrics["total_words"]
-        self.total_characters = metrics["total_characters"]
-        self.avg_words_per_page= metrics["avg_words_per_page"]
-        self.avg_characters_per_page= metrics["avg_characters_per_page"]
-        self.document_type= metrics["document_type"]
-    
+    total_pages : int
+    total_words : int
+    total_characters : int
+    avg_words_per_page: int
+    avg_characters_per_page: int
+    document_type: DocumentType
 
 
 
-class Metrcis:
+class Metrics:
 
-    def get_metrcis(self, file_path : str):
+    def get_metrics(self, file_path : str):
         doc = fitz.open(file_path)
 
         total_words = 0
@@ -35,6 +33,7 @@ class Metrcis:
             "total_characters" : total_characters,
             "avg_words_per_page": total_words/total_pages,
             "avg_characters_per_page": total_characters/total_pages
+
         }
 
 
