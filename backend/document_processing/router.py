@@ -11,10 +11,10 @@ class DocumentRouter:
         else:
             doc_type = DocumentType.SCANNED
         return DocumentMetrics(
-            total_pages=metrics["pages"],
-            total_words=metrics["words"],
-            total_characters=metrics["characters"],
-            average_words_per_page=metrics["avg_words"],
-            average_characters_per_page=metrics["avg_characters"],
-            document_type=doc_type,
+            total_pages=metrics["total_pages"],
+            total_words=metrics["total_words"],
+            total_characters=metrics["total_characters"],
+            avg_words_per_page=metrics["avg_words_per_page"],
+            avg_characters_per_page=metrics["avg_characters_per_page"],
+            document_type=doc_type
         )
