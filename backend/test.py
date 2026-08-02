@@ -1,7 +1,13 @@
 from document_processing.router import DocumentRouter
+from document_processing.processor import DocumentProcessor
 
-router = DocumentRouter()
+# router = DocumentRouter()
 
-result = router.classify_document("docs/LeetCode Java Practice Solved Questions.pdf")
+# result = router.classify_document("docs/LeetCode Java Practice Solved Questions.pdf")
 
-print(result)
+# print(result)
+
+document_processor = DocumentProcessor()
+result = document_processor.extract_text("docs/LeetCode Java Practice Solved Questions.pdf")
+print(result.total_pages)
+print(result.content)
