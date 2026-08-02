@@ -17,7 +17,7 @@ class PDFParser:
         for page in doc:
             text = page.get_text()
             if text.strip():
-                pages.add(text)
+                pages.append(text)
 
         file_content = "\n\n".join(pages)
         return ParsedDocument(
