@@ -16,4 +16,5 @@ from docling_processing.json_extractor import JsonExtractor
 
 extractor = JsonExtractor()
 response = extractor.extract("docs/1000073988.pdf")
-print(response)
+# print(response)
+extractor.save()
