@@ -14,6 +14,7 @@
 
 from docling_processing.markdown_extractor import MDExtractor
 from llm.llm_model import ModelEngine
+from excel.excel_generator import ExcelGenerator
 extractor = MDExtractor()
 response = extractor.extract("docs/1000073988.pdf")
 # print(response)
@@ -21,3 +22,10 @@ response = extractor.extract("docs/1000073988.pdf")
 model = ModelEngine()
 result = model.run(response)
 model.save("invoice.json")
+
+excel = ExcelGenerator()
+excel.save(
+    workbook_json=result,
+    output_path="docs/invoice.xlsx"
+)
+
