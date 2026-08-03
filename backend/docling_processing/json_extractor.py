@@ -17,7 +17,7 @@ class JsonExtractor:
         except Exception as e:
             print(f"Exception : {e}")
 
-    def save(self, json: dict, persist_dir:str = "docs/"):
+    def save(self, persist_dir:str = "docs/"):
         try:
             os.makedirs(persist_dir, exist_ok=True)
 
