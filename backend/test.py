@@ -12,9 +12,9 @@
 # print(result.total_pages)
 # print(result.content)
 
-from docling_processing.json_extractor import JsonExtractor
+from docling_processing.markdown_extractor import MDExtractor
 
-extractor = JsonExtractor()
+extractor = MDExtractor()
 response = extractor.extract("docs/1000073988.pdf")
-# print(response)
-extractor.save()
+print(response)
+# extractor.save()
