@@ -2,6 +2,7 @@ from docling.document_converter import DocumentConverter
 import os
 
 os.environ["HF_TOKEN"] = os.getenv("HF_TOKEN")
+os.environ["CUDA_VISIBLE_DEVICES"] = ""
 
 class MDExtractor:
     def __init__(self):
