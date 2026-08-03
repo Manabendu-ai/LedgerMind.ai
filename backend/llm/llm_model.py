@@ -4,6 +4,9 @@ from langchain.agents import create_agent
 import os
 from .json_response import JsonFormatResponse
 from .system_message import message
+from dotenv import load_dotenv
+
+load_dotenv()
 
 os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
 
