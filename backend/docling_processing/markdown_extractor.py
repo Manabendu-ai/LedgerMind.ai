@@ -15,5 +15,19 @@ class MDExtractor:
             self.content = doc.document.export_to_markdown()
             return self.content
         except Exception as e:
-            print(f"Exception : {e}")
+            print(f"Exception at Extracting: {e}")
+
+    def save(self, persist_dir:str = "docs/"):
+        try:
+            os.makedirs(persist_dir, exist_ok=True)
+    
+            file_name = self.file_path.split(".")[0].split("/")[1]
+            md_path = os.path.join(persist_dir, f"{file_name}.md")
+    
+            with open(md_path, "w", encoding="utf-8") as f:
+                f.write(self.content)
+    
+            print(f"[SUCCESS] File Saved at : {md_path}")
+        except Exception as e:
+            print(f"Exception at Saving : {e}")
         
