@@ -16,5 +16,5 @@ from docling_processing.markdown_extractor import MDExtractor
 
 extractor = MDExtractor()
 response = extractor.extract("docs/1000073988.pdf")
-print(response)
-# extractor.save()
+# print(response)
+extractor.save()
