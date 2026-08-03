@@ -8,6 +8,6 @@ from document_processing.processor import DocumentProcessor
 # print(result)
 
 document_processor = DocumentProcessor()
-result = document_processor.extract_text("docs/LeetCode Java Practice Solved Questions.pdf")
+result = document_processor.extract_text("docs/1000073988.pdf")
 print(result.total_pages)
 print(result.content)
