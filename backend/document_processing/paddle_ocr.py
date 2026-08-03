@@ -1,6 +1,7 @@
 from paddleocr import PaddleOCR
 import fitz
-from parser import ParsedDocument
+from .parser import ParsedDocument
+import numpy as np
 
 class OCRParser:
 
@@ -19,7 +20,7 @@ class OCRParser:
         for page in doc:
             pix = page.get_pixmap(dpi=300)
 
-            img = pix.pil_image()
+            img = np.array(pix.pil_image())
 
             res = self.ocr.predict(img)
 
