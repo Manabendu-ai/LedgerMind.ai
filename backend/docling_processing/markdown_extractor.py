@@ -1,5 +1,8 @@
 from docling.document_converter import DocumentConverter
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 os.environ["HF_TOKEN"] = os.getenv("HF_TOKEN")
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
