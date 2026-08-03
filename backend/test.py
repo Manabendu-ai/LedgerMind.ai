@@ -13,8 +13,11 @@
 # print(result.content)
 
 from docling_processing.markdown_extractor import MDExtractor
-
+from llm.llm_model import ModelEngine
 extractor = MDExtractor()
 response = extractor.extract("docs/1000073988.pdf")
 # print(response)
-extractor.save()
+# extractor.save()
+model = ModelEngine()
+result = model.run(response)
+print(result)
