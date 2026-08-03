@@ -2,4 +2,4 @@ from pydantic import BaseModel, Field
 from typing import Any
 
 class JsonFormatResponse(BaseModel):
-    content: dict[Any] = Field(description="Json Object from the Extracted Data")
+    content: dict = Field(description="Json Object from the Extracted Data")
