@@ -17,10 +17,23 @@ class ModelEngine:
         self.agent = create_agent(
             model=self.model,
             tools=[],
-            system_prompt=message
+            system_prompt=message,
+            response_format=JsonFormatResponse
         )
 
         print("[INFO] LLM Model loaded Successfully!")
+
+    def run(self, markdown : str)->JsonFormatResponse:
+        return self.agent.invoke(
+            {
+                "messages" : [
+                    {
+                        "role" : "user",
+                        "content" : markdown
+                    }
+                ]
+            }
+        )
 
 
 
