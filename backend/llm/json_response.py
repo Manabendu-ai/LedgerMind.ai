@@ -1,5 +1,17 @@
-from pydantic import BaseModel, Field
 from typing import Any
+from pydantic import BaseModel
+
+
+class Worksheet(BaseModel):
+    worksheet_name: str
+    columns: list[str]
+    rows: list[list[Any]]
+
+
+class Workbook(BaseModel):
+    worksheets: list[Worksheet]
+
 
 class JsonFormatResponse(BaseModel):
-    content: dict = Field(description="Json Object from the Extracted Data")
+    document_type: str
+    workbook: Workbook
