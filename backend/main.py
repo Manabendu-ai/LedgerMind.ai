@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from router import excel_router as exr
+from .router.excel_router import router as exr
 
 app = FastAPI(
     title="LedgerMind.ai",
