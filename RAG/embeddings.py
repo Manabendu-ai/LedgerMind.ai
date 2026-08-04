@@ -16,3 +16,13 @@ class EmbeddingPipeline:
         self.chunk_overlap = chunk_overlap
         self.doc_loader = DocumentLoader()
         print(f"[INFO] loaded Embedding Model{model_name}")
+
+    def chunk_documents(self, documents: List[Any]) -> List[Any]:
+        splitter = RecursiveCharacterTextSplitter(
+            chunk_size = self.chunk_size,
+            chunk_overlap=self.chunk_overlap,
+            length_function = len,
+            seperators = ["\n\n","\n", " ",""] 
+        )
+        chunks = splitter.split_documents(documents)
+        return chunks
