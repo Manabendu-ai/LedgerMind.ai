@@ -1,11 +1,14 @@
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Border, Side, Alignment
+import os
 
 
 class ExcelGenerator:
 
-    def save(self, workbook_json, output_path: str)->str:
+    def save(self, workbook_json, filename: str, persist_dir: str="excel_files/")->str:
 
+        os.makedirs(persist_dir, exist_ok=True)
+        output_path = os.path.join(persist_dir, f"{filename}.xlsx")
         wb = Workbook()
 
         wb.remove(wb.active)
