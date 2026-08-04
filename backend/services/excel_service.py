@@ -22,11 +22,18 @@ class ExcelService:
         return self.json_path
 
     def excel_generator(self)->str:
-        path = os.path.join("excel/",f"{self.excel_filename}.xlsx")
+        path = os.path.join("excel_files/",f"{self.excel_filename}.xlsx")
         self.excel_path = self.excel_gen.save(
             workbook_json=self.workbook_json,
             output_path=path
         )
+        return self.excel_path
+
+    async def convert(self)->str:
+        """THe main pipeline for pdf -> json -> excel"""
+        self.markdown_generator()
+        self.json_converter()
+        self.excel_generator()
         return self.excel_path
 
     
