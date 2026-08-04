@@ -41,7 +41,7 @@ class ModelEngine:
 
         return self.response
 
-    def save(self, file_name, persist_dir:str = "docs/"):
+    def save(self, file_name, persist_dir:str = "docs/")->str:
         try:
             os.makedirs(persist_dir, exist_ok=True)
             json_path = os.path.join(persist_dir, file_name)
@@ -50,6 +50,7 @@ class ModelEngine:
                 json.dump(self.response.model_dump(), f, indent = 4, ensure_ascii=False)
 
             print(f"[SUCCESS] File Saved at : {json_path}")
+            return json_path
         except Exception as e:
             print(f"Exception at file saving: {e}")
 
