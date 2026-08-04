@@ -10,4 +10,9 @@ class ExcelService:
         self.model = ModelEngine()
         self.excel_gen = ExcelGenerator()
 
+    def markdown_generator(self):
+        self.extractor.extract(self.file_path)
+        self.md_path = self.extractor.save()
+        return self.md_path
+ 
     
