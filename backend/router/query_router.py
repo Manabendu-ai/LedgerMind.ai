@@ -8,5 +8,5 @@ router = APIRouter(
 
 @router.post("")
 async def rag_search(query: str):
-    response = RagService.get_response(query)
+    response = RagService(query).get_response()
     return response
