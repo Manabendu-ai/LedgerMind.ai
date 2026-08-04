@@ -20,7 +20,7 @@ class MDExtractor:
         except Exception as e:
             print(f"Exception at Extracting: {e}")
 
-    def save(self, persist_dir:str = "docs/"):
+    def save(self, persist_dir:str = "docs/")->str:
         try:
             os.makedirs(persist_dir, exist_ok=True)
     
@@ -31,6 +31,7 @@ class MDExtractor:
                 f.write(self.content)
     
             print(f"[SUCCESS] File Saved at : {md_path}")
+            return md_path
         except Exception as e:
             print(f"Exception at Saving : {e}")
         
