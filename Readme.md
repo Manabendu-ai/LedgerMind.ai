@@ -1,2 +1,2 @@
 
-<img src="assests/ledgerMind.ai.png" alt="App Logo" width="700">
+<img src="assests/ledgerMind.ai.png" alt="App Logo" width="100%">
