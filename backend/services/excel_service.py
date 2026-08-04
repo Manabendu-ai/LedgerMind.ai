@@ -25,7 +25,7 @@ class ExcelService:
         path = os.path.join("excel_files/",f"{self.excel_filename}.xlsx")
         self.excel_path = self.excel_gen.save(
             workbook_json=self.workbook_json,
-            output_path=path
+            filename=self.excel_filename
         )
         return self.excel_path
 
