@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from router import excel_router as exr
 
 app = FastAPI(
     title="LedgerMind.ai",
@@ -8,6 +9,8 @@ app = FastAPI(
     and financial records into structured intelligence.
     """
 )
+
+app.include_router(exr)
 
 @app.get("/")
 def home():
