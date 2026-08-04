@@ -12,7 +12,7 @@ router = APIRouter(
 async def excel_generator(file : UploadFile, excel_filename: str):
 
     file_path = await FileService().save(file)
-    excel_file_path = await ExcelService().convert(file_path, excel_filename)
+    excel_file_path = await ExcelService(file_path, excel_filename).convert()
 
     return {
        "status" : "Excel File Generated Successfully",
