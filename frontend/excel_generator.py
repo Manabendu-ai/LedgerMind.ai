@@ -1,4 +1,4 @@
-from .config import EXCEL_CONVERTER_API
+from config import EXCEL_CONVERTER_API
 import requests
 
 class ExcelGenerator:
