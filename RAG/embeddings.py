@@ -2,7 +2,7 @@ from typing import List, Any
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from sentence_transformers import SentenceTransformer
 import numpy as np
-from data_loader import DocumentLoader
+from .data_loader import DocumentLoader
 
 class EmbeddingPipeline:
     def __init__(
@@ -22,7 +22,7 @@ class EmbeddingPipeline:
             chunk_size = self.chunk_size,
             chunk_overlap=self.chunk_overlap,
             length_function = len,
-            seperators = ["\n\n","\n", " ",""] 
+            separators = ["\n\n","\n", " ",""] 
         )
         chunks = splitter.split_documents(documents)
         return chunks
