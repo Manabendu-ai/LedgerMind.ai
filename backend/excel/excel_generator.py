@@ -4,7 +4,7 @@ from openpyxl.styles import Font, PatternFill, Border, Side, Alignment
 
 class ExcelGenerator:
 
-    def save(self, workbook_json, output_path: str):
+    def save(self, workbook_json, output_path: str)->str:
 
         wb = Workbook()
 
@@ -69,3 +69,4 @@ class ExcelGenerator:
         wb.save(output_path)
 
         print(f"[SUCCESS] Excel saved at {output_path}")
+        return output_path
