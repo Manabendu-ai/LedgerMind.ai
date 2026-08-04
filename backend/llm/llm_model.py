@@ -44,7 +44,7 @@ class ModelEngine:
     def save(self, file_name, persist_dir:str = "docs/")->str:
         try:
             os.makedirs(persist_dir, exist_ok=True)
-            json_path = os.path.join(persist_dir, file_name)
+            json_path = os.path.join(persist_dir, f"{file_name}.json")
 
             with open(json_path, "w", encoding="utf-8") as f:
                 json.dump(self.response.model_dump(), f, indent = 4, ensure_ascii=False)
