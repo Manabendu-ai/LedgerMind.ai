@@ -1,5 +1,5 @@
 import streamlit as st
-
+from .excel_generator import ExcelGenerator
 st.set_page_config(
     page_title = "LedgerMind.ai",
     layout="centered",
@@ -27,6 +27,6 @@ with st.form(key = "upload_documnet"):
         submit_btn = st.form_submit_button(label="Genrate the excel sheet")
 
 if submit_btn:
-    reponse = ExcelGenerator(uploaded_file)
+    reponse = ExcelGenerator(uploaded_file).convert()
     st.success(reponse)
         
