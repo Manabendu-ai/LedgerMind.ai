@@ -1,4 +1,4 @@
-from langchain_community.document_loaders import UnstructuredMarkdownLoader, TextLoader
+from langchain_community.document_loaders import TextLoader
 from pathlib import Path
 from typing import List, Any
 
@@ -11,7 +11,7 @@ class DocumentLoader:
         md_files = list(path.glob("**/*.md"))
         for md_file in md_files:
             try:
-                loader = UnstructuredMarkdownLoader(str(md_file))
+                loader = TextLoader(str(md_file))
                 loaded = loader.load()
                 docs.extend(loaded)
             except Exception as e:
