@@ -27,6 +27,8 @@ with st.form(key = "upload_documnet"):
             st.session_state.uploaded_file = uploaded_file
         if "file_name" not in st.session_state:
             st.session_state.file_name=""
+        if "saved_at" not in st.session_state:
+                            st.session_state.saved_at = ""
 
         st.session_state.file_name = st.text_input("name of your excel file ")
         submit_btn = st.form_submit_button(label="Genrate the excel sheet")
@@ -36,11 +38,23 @@ with st.form(key = "upload_documnet"):
             if file is None:
                 st.error("Please Upload a File!")
             else:
-                reponse = ExcelGenerator(
-                    file, 
-                    st.session_state.get("file_name")
-                ).convert()
-                st.success(reponse)
+                with st.spinner("Generating Excel..."):
+                    st.session_state.saved_at = ExcelGenerator(
+                        file, 
+                        st.session_state.get("file_name")
+                    ).convert()
+                st.success(f"Excel File Generated Successfully!")
+
+if st.session_state.saved_at:
+    left, center, right = st.columns([3,10,3])
+    with right:
+        with open(st.session_state.saved_at, "rb") as f:
+                st.download_button(
+                label="Download Excel",
+                data = f,
+                file_name=f"{st.session_state.file_name}.xlsx",
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
 
 
         
