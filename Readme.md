@@ -1,2 +1,2 @@
 
-<img src="assests/slide1.png" alt="App Logo" width="100%">
+<img src="assests/s1.png" alt="App Logo" width="100%">
