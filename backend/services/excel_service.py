@@ -1,6 +1,7 @@
 from ..docling_processing.markdown_extractor import MDExtractor
 from ..llm.llm_model import ModelEngine
 from ..excel.excel_generator import ExcelGenerator
+import os
 
 class ExcelService:
     def __init__(self, file_path: str, excel_filename:str):
@@ -16,9 +17,17 @@ class ExcelService:
         return self.md_path
 
     def json_converter(self)->str:
-        self.response = self.model.run(self.markdown)
+        self.workbook_json = self.model.run(self.markdown)
         self.json_path = self.model.save(self.excel_filename, "json_files/")
         return self.json_path
+
+    def excel_generator(self)->str:
+        path = os.path.join("excel/",f"{self.excel_filename}.xlsx")
+        self.excel_path = self.excel_gen.save(
+            workbook_json=self.workbook_json,
+            output_path=path
+        )
+        return self.excel_path
 
     
 
