@@ -16,6 +16,6 @@ async def excel_generator(file : UploadFile, excel_filename: str):
 
     return {
        "status" : "Excel File Generated Successfully",
-       "file" : filename, 
+       "file" : excel_filename, 
        "saved_at" : excel_file_path
     }
