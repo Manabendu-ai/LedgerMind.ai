@@ -10,15 +10,15 @@ class ExcelGenerator:
                     file.type
                 )
             }
-        self.data = {
+        self.params = {
             "excel_filename" : filename
         }
 
     def convert(self):
         try:
-            response = requests.post(EXCEL_CONVERTER_API, files=self.files,data=self.data)
+            response = requests.post(EXCEL_CONVERTER_API, params=self.params, files=self.files)
             if response.status_code == 200:
-                return response.json()
+                return response.json()["saved_at"]
             else:
                 return {
                         "status": "error",
