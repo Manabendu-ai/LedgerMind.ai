@@ -9,44 +9,6 @@ st.set_page_config(
 
 st.title("LedgerMind.ai")
 
-st.sidebar.title("Ledger Agent")
-st.sidebar.markdown(
-    """
-    ### Query anything related to your invoices and documents!
-    """
-)
-
-if "messages" not in st.session_state:
-    st.session_state.messages=[]
-for message in st.session_state.messages:
-    with st.sidebar.chat_message(message['role']):
-        st.sidebar.markdown(message['content'])
-
-if prompt := st.sidebar.chat_input(""):
-    st.session_state.messages.append(
-        {
-            "role" : "user",
-            "content" : prompt
-        }
-    )
-
-    with st.sidebar.chat_message("user"):
-        st.sidebar.markdown(prompt)
-
-    response = QueryService().get_response(prompt)
-
-    answer = response["answer"]
-
-    st.session_state.messages.append(
-        {
-            "role" : "ai",
-            "content" : answer
-        }
-    )
-
-    with st.sidebar.chat_message("ai"):
-        st.sidebar.markdown(answer)
-
 st.markdown(
     """
     #### Enterprise AI platform that transform invoices, receipts, tax documents, and financial records into structured intelligence.
@@ -96,4 +58,33 @@ if st.session_state.saved_at:
         )
 
 
-        
+if "messages" not in st.session_state:
+    st.session_state.messages=[]
+for message in st.session_state.messages:
+    with st.chat_message(message['role']):
+        st.markdown(message['content'])
+
+if prompt := st.chat_input("Ask Anything related to your invoices, reciepts..."):
+    st.session_state.messages.append(
+        {
+            "role" : "user",
+            "content" : prompt
+        }
+    )
+
+    with st.chat_message("user"):
+        st.markdown(prompt)
+
+    response = QueryService().get_response(prompt)
+
+    answer = response["answer"]
+
+    st.session_state.messages.append(
+        {
+            "role" : "ai",
+            "content" : answer
+        }
+    )
+
+    with st.chat_message("ai"):
+        st.markdown(answer)
