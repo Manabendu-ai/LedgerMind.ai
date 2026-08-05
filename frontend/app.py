@@ -1,5 +1,6 @@
 import streamlit as st
 from excel_generator import ExcelGenerator
+from rag_service import QueryService
 st.set_page_config(
     page_title = "LedgerMind.ai",
     layout="centered",
@@ -14,6 +15,37 @@ st.sidebar.markdown(
     ### Query anything related to your invoices and documents!
     """
 )
+
+if "messages" not in st.session_state:
+    st.session_state.messages=[]
+for message in st.session_state.messages:
+    with st.sidebar.chat_message(message['role']):
+        st.sidebar.markdown(message['content'])
+
+if prompt := st.sidebar.chat_input(""):
+    st.session_state.messages.append(
+        {
+            "role" : "user",
+            "content" : prompt
+        }
+    )
+
+    with st.sidebar.chat_message("user"):
+        st.sidebar.markdown(prompt)
+
+    response = QueryService().get_response(prompt)
+
+    answer = response["answer"]
+
+    st.session_state.messages.append(
+        {
+            "role" : "ai",
+            "content" : answer
+        }
+    )
+
+    with st.sidebar.chat_message("ai"):
+        st.sidebar.markdown(answer)
 
 st.markdown(
     """
