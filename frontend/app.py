@@ -8,6 +8,13 @@ st.set_page_config(
 
 st.title("LedgerMind.ai")
 
+st.sidebar.title("Ledger Agent")
+st.sidebar.markdown(
+    """
+    ### Query anything related to your invoices and documents!
+    """
+)
+
 st.markdown(
     """
     #### Enterprise AI platform that transform invoices, receipts, tax documents, and financial records into structured intelligence.
